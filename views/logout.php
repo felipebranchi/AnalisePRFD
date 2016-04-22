@@ -8,7 +8,7 @@ $sessionClass = new Sessao();
 // Verifica se não há um usuário logado
 if ( $sessionClass->usuarioLogado() === false ) {
   // Não há um usuário logado, redireciona pra tela de login
-  header("Location: login.php");
+  header("Location: index.php");
   exit;
 }
 

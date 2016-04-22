@@ -1,6 +1,4 @@
-<?php 
-
-// Inclui o arquivo com a classe de login
+<?php
 //require_once("../classes/sessao.class.php");
 include_once("../classes/app.php");
 
@@ -12,9 +10,9 @@ if ( $sessionClass->usuarioLogado() === false ) {
   header("Location: login.php");
   exit;
 }
-?>
-<?php include_once("partials/head.php"); ?>
-<?php include_once("partials/navbar.php"); ?>
+
+include_once("partials/head.php");
+include_once("partials/navbar.php"); ?>
 	      <div>
 	        <h1>Bem vindo, <?php echo ucfirst($_SESSION['usuario_nome']); ?>!</h1>
 	      </div>
