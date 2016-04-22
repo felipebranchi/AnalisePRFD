@@ -17,7 +17,7 @@ class Sessao {
      * @var string
      * @since v1.0
      */
-    public $bancoDeDados = 'identrad';
+    public $bancoDeDados = 'cutree';
 
     /**
      * Nome da tabela de usuários

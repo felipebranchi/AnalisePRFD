@@ -9,6 +9,6 @@ class Configuration
     public $dbhostname = 'localhost';
     public $dbname = 'cutree';
     public $dbusername = 'root';
-    public $dbpassword = '1234';
+    public $dbpassword = '';
 
 }

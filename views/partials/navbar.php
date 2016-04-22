@@ -17,22 +17,30 @@
         <li class="active"><a href="index.php">Início</a></li>
         <li><a href="contato.php">Contato</a></li>
 
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Árvores<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Poda</a></li>
-            <li><a href="#">Remoção</a></li>
-          </ul>
-        </li>
+        <?php
 
-	<li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lixo<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Remoção comum</a></li>
-            <li><a href="#">Remoção de hospitalar</a></li>
-            <li><a href="#">Remoções de entulho</a></li>
-          </ul>
-        </li>
+          // Verifica se há um usuário logado
+          if ( $sessionClass->usuarioLogado() === true ) {
+            echo 
+
+            '<li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Árvores<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Poda</a></li>
+                <li><a href="#">Remoção</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lixo<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Remoção comum</a></li>
+                      <li><a href="#">Remoção de hospitalar</a></li>
+                      <li><a href="#">Remoções de entulho</a></li>
+                    </ul>
+                  </li>';
+          }
+        ?>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
