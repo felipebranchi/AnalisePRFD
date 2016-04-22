@@ -36,7 +36,7 @@ include_once("../classes/app.php");
           <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
         </form>
 
-        <p id="cadastrar">Esqueceu sua senha? Clique <a href="esqueci_senha.php">aqui</a>!</p>
+        <!-- <p id="cadastrar">Esqueceu sua senha? Clique <a href="esqueci_senha.php">aqui</a>!</p> -->
         <p id="cadastrar">Não possui cadastro? Clique aqui para se <a href="cadastro_cliente_pt1.php">cadastrar</a>!</p>
 
       </div> <!-- /container -->
