@@ -22,7 +22,7 @@ include_once("../classes/app.php");
         
         <div class="container">
 
-        <form class="form-signin" method="POST" action="valida_login.php">
+        <form class="form-signin" method="POST" action="valida-login.php">
           <h3 class="form-signin-heading">Entre com seu usuário e senha.</h3>
           <label for="usuario" class="sr-only">Usuário</label>
           <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuário" required autofocus>
@@ -37,7 +37,7 @@ include_once("../classes/app.php");
         </form>
 
         <!-- <p id="cadastrar">Esqueceu sua senha? Clique <a href="esqueci_senha.php">aqui</a>!</p> -->
-        <p id="cadastrar">Não possui cadastro? Clique aqui para se <a href="cadastro_cliente_pt1.php">cadastrar</a>!</p>
+        <p id="cadastrar">Não possui cadastro? Clique aqui para se <a href="cadastro-cliente.php">cadastrar</a>!</p>
 
       </div> <!-- /container -->
 

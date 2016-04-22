@@ -1,13 +1,11 @@
 <?php
-// Inclui o arquivo com a classe de login
-//require_once("../classes/sessao.class.php");
 include_once("../classes/app.php");
 
 // Instancia a classe
 $sessionClass = new Sessao();
-?>
-<?php include_once("partials/head.php"); ?>
-<?php include_once("partials/navbar.php"); ?>
+
+include_once("partials/head.php");
+include_once("partials/navbar.php"); ?>
 
 <div class="container">
     <div class="col-lg-8">
@@ -38,65 +36,20 @@ $sessionClass = new Sessao();
                 <br>
 
                 <div class="form-group col-lg-8 col-md-4">
-                    <label for="sexo">Sexo</label>
-                    <div class="input-group">
-                        <span>
-                            <input type="radio" name="sexo" value="1" aria-label="Feminino"> Feminino
-                            <br>
-                            <input type="radio" name="sexo" value="2" aria-label="Masculino"> Masculino
-                            <br>
-                            <input type="radio" name="sexo" value="0" aria-label="Indefinido"> Não informado
-                        </span>
-                    </div><!-- /input-group -->
-                </div>
-                <br>
-
-                <div class="form-group col-lg-8 col-md-4">
                     <label for="nascimento">Data nascimento</label>
                     <input type="date" class="form-control" id="nascimento">
                 </div>
                 <br>
 
                 <div class="form-group col-lg-8 col-md-4">
-                    <label for="rg">RG</label>
-                    <input type="text" class="form-control" id="rg">
+                    <label for="DDD">DDD</label>
+                    <input type="text" class="form-control" id="ddd" placeholder="DDD">
                 </div>
                 <br>
-
+                
                 <div class="form-group col-lg-8 col-md-4">
-                    <label for="datanasc">Naturalidade</label>
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Dropdown
-                            <span class="caret"></span>
-                        </button>
-                    </div>
-                </div>
-                <br>
-
-                <div class="form-group col-lg-8 col-md-4">
-                    <label for="estadocivil">Estado Civil</label>
-                    <div class="input-group">
-                        <span>
-                            <input type="radio" name="estadocivil" value="SOLTEIRO" aria-label="solteiro"> Solteiro(a)
-                            <br>
-                            <input type="radio" name="estadocivil" value="CASADO" aria-label="casado"> Casado(a)
-                            <br>
-                            <input type="radio" name="estadocivil" value="DIVORCIADO" aria-label="Masculino"> Divorciado(a)
-                            <br>
-                            <input type="radio" name="estadocivil" value="VIUVO" aria-label="Masculino"> Viúvo(a)
-                        </span>
-                    </div><!-- /input-group -->
-                </div>
-                <br>
-
-                <div class="form-group col-lg-8 col-md-4">
-                    <label for="telefones">Telefones</label>
-                    <input type="text" class="form-control" id="telefone_celular" placeholder="Celular">
-                    <br>
-                    <input type="text" class="form-control" id="telefone_residencial" placeholder="Residencial">
-                    <br>
-                    <input type="text" class="form-control" id="telefone_recado" placeholder="Recado">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" class="form-control" id="telefone" placeholder="Telefone">
                 </div>
                 <br>
                 
@@ -133,12 +86,6 @@ $sessionClass = new Sessao();
                 <div class="form-group col-lg-8 col-md-4">
                     <label for="endereco_complemento">Complemento</label>
                     <input type="text" class="form-control" id="endereco_complemento" placeholder="Complemento">
-                </div>
-                <br>
-                
-                <div class="form-group col-lg-8 col-md-4">
-                    <label for="foto">Foto</label>
-                    <input type="file" name="foto">
                 </div>
                 <br>
                 

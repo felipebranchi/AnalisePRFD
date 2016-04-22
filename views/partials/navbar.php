@@ -24,19 +24,19 @@
             echo 
 
             '<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Árvores<span class="caret"></span></a>
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Árvores<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Poda</a></li>
-                <li><a href="#">Remoção</a></li>
+                <li><a href="solicitacao-poda.php">Poda</a></li>
+                <li><a href="solicitacao-remocao.php">Remoção</a></li>
               </ul>
             </li>
 
             <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lixo<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Remoção comum</a></li>
-                      <li><a href="#">Remoção de hospitalar</a></li>
-                      <li><a href="#">Remoções de entulho</a></li>
+                      <li><a href="solicitacao-lixo-comum.php">Remoção comum</a></li>
+                      <li><a href="solicitacao-lixo-hospitalar.php">Remoção de hospitalar</a></li>
+                      <li><a href="solicitacao-lixo-entulho.php">Remoções de entulho</a></li>
                     </ul>
                   </li>';
           }
