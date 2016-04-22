@@ -1,4 +1,4 @@
-/*
+﻿/*
 
 TELAS DO SISTEMA
 
@@ -12,7 +12,7 @@ solicitações anteriores
 
  - Cadastros
 
-cadastro
+cadastro ~
 sol. poda
 sol. remoção
 sol. lixo comum
@@ -21,9 +21,10 @@ sol. lixo entulho
 
  - Diversos
 
-login
-contato
-boas vindas
+login v
+contato v
+boas vindas ~
 cadastro efetuado com sucesso
+solicitacao efetuada com sucesso
 
 */
