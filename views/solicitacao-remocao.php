@@ -61,6 +61,12 @@ include_once("partials/navbar.php"); ?>
                 </div>
                 <br>
                 
+                <div class="form-group col-lg-8 col-md-4">
+                    <label for="Observação">Observação:</label>
+                    <input type="text" class="form-control" id="observacao" placeholder="Observação">
+                </div>
+                <br>
+                
                 <div class="form-group col-lg-10 col-md-4">
                     <button type="submit" id="subm" class="btn btn-success">Enviar</button>
                 </div>
