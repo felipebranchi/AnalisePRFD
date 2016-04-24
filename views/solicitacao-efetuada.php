@@ -13,7 +13,9 @@ if ( $sessionClass->usuarioLogado() === false ) {
 
 include_once("partials/head.php");
 include_once("partials/navbar.php"); ?>
-
+            <div>
+	        <h1>Solicitação efetuada com sucesso. Acesse a página de solicitações anteriores para acompanhar o status da sua solicitação.</h1>
+	    </div>
 <?php include_once("partials/bottom.php"); ?>
 
 ?>
