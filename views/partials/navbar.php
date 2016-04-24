@@ -23,7 +23,9 @@
           if ( $sessionClass->usuarioLogado() === true ) {
             echo 
 
-            '<li class="dropdown">
+            '<li><a href="alterar-cadastro.php">Alterar cadastro</a></li>
+                
+            <li class="dropdown">
               <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Árvores<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="solicitacao-poda.php">Poda</a></li>
