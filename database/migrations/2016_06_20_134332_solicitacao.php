@@ -22,6 +22,7 @@ class Solicitacao extends Migration
     {
         Schema::create('solicitacao', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('usuario_id')->unsigned()->nullable();
             $table->string('cep', 10)->nullable();
             $table->string('uf', 2)->nullable();
             $table->string('cidade', 50)->nullable();

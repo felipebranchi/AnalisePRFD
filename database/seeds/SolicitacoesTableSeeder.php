@@ -30,6 +30,7 @@ class SolicitacoesTableSeeder extends Seeder
             DB::table('solicitacao')->insert(
                 [
                     'id' => ($i + 1 + 10),
+                    'usuario_id' => rand(12, 111),
                     'cep' => "90050-003",
                     'uf' => array_rand(self::$UF, 1),
                     'cidade' => $faker->city,
