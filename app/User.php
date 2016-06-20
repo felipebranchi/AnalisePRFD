@@ -73,7 +73,7 @@ class User extends Authenticatable
      */
     public function solicitacao()
     {
-        $results = $this->belongsTo('App\Solicitacao', 'id', 'usuario_id')->getResults();
+        $results = $this->hasMany('App\Solicitacao', 'id', 'usuario_id')->getResults();
         return !empty($results) ? $results : null;
     }
 }
