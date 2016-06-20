@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @package    EcoService.EcoServiceWeb
+ *
+ * @author     Renata Givisiez <rcgivisiez@gmail.com>
+ * @copyright  Copyright (C) 2016 Renata Givisiez. All rights reserved.
+ * @license    The MIT License (MIT)
+ */
+
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
