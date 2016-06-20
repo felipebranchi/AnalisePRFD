@@ -13,7 +13,7 @@ a DB_*. Tenha certeza de já ter criado o banco de dados antes de fazer isso
 - `php artisan key:generate` Gera chave, necessario para aplicação rodar da primeria vez
 - `php artisan migrate:refresh --seed` # Isto cria e popula as tabelas
 - `php artisan serve`
-- Acesse http://localhost/`caminho do projeto no seu computador` ex: EcoService
+- Acesse http://localhost:8000
 
 ### Comandos
 
