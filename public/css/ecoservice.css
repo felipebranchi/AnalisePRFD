@@ -1,0 +1,16 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial,'Droid Sans', sans-serif;
+}
+.rodape  {
+  padding-top: 20px;
+}
+img {
+  max-width: 100%;
+}
+.form-group.required label:after { 
+  content:" *";
+  color:red;
+}
+/* Fundo verde. */
+body {background-color: #11772D;}
+footer {color: gray;}
