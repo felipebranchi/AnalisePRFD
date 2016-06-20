@@ -1,3 +1,6 @@
+# Impede listagem de diretórios. NÃO REMOVER LINHA ABAIXO! 
+Options -Indexes
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews
