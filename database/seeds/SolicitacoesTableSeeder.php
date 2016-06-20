@@ -9,9 +9,13 @@
  */
 
 use Illuminate\Database\Seeder;
+use App\Http\Middleware\Lista as Lista;
 
 class SolicitacoesTableSeeder extends Seeder
 {
+    
+    use Lista;
+    
     /**
      * Run the database seeds.
      *
