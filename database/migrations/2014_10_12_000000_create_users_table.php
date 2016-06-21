@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->tinyInteger('is_admin')->defalt(0)->comment('Se é superadmin, cadastrado MANUALMENTE no banco de dados. Não permitido via sistema');
             $table->rememberToken();
             $table->timestamps();
         });

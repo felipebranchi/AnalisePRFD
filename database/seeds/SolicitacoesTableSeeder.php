@@ -26,11 +26,12 @@ class SolicitacoesTableSeeder extends Seeder
         $faker = Faker\Factory::create();
         $faker->addProvider(new Faker\Provider\pt_BR\Address($faker));
         
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             DB::table('solicitacao')->insert(
                 [
-                    'id' => ($i + 1 + 10),
-                    'usuario_id' => rand(12, 111),
+                    //'id' => $i + 1,
+                    // 25% das solicitacoes serao do admin ou do usuaro de teste
+                    'user_id' => rand(0, 4) ? rand(1, 2) : rand(3, 100),
                     'cep' => "90050-003",
                     'uf' => array_rand(self::$UF, 1),
                     'cidade' => $faker->city,

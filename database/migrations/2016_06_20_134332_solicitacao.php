@@ -22,7 +22,7 @@ class Solicitacao extends Migration
     {
         Schema::create('solicitacao', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('usuario_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('cep', 10)->nullable();
             $table->string('uf', 2)->nullable();
             $table->string('cidade', 50)->nullable();
@@ -33,7 +33,7 @@ class Solicitacao extends Migration
             $table->tinyInteger('tipo')->default(0)->comment('0: poda de arvore; 1: remoçao de arvore; 2: remoçao de lixo domestico; 3: remoçao de lixo hospitalar; 4: remoçao de entulho');
             $table->timestamps();
             
-            $table->foreign('usuario_id')->references('id')->on('user')->onDelete('CASCADE');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
 
