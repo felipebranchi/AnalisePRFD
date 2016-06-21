@@ -26,7 +26,7 @@ class SolicitacoesTableSeeder extends Seeder
         $faker = Faker\Factory::create();
         $faker->addProvider(new Faker\Provider\pt_BR\Address($faker));
         
-        for ($i = 0; $i < 1000; $i++) {
+        for ($i = 0; $i <= 1000; $i++) {
             DB::table('solicitacao')->insert(
                 [
                     //'id' => $i + 1,

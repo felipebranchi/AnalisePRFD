@@ -13,7 +13,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class PaginaController extends Controller
 {
     /**
      * Create a new controller instance.

@@ -33,9 +33,8 @@ class SolicitacaoController extends Controller
     public function index()
     {
         $solicitacoes = Solicitacao::where(function($query) {
-            $query->where('usuario_id', '=', Auth::user()->id);
-        })
-            ->paginate(10);
+            //$query->where('user_id', '=', Auth::user()->id);
+        })->paginate(20);
 
         return view('solicitacao.index')->withSolicitacoes($solicitacoes);
     }

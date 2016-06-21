@@ -53,7 +53,7 @@ class UsersTableSeeder extends Seeder
         // Cria demais usuarios
         // emails aleatorios
         // 123456
-        for ($i = 3; $i < 100; $i++) {
+        for ($i = 3; $i <= 100; $i++) {
             DB::table('users')->insert(
                 [
                     'id' => $i,

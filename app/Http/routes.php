@@ -25,4 +25,4 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'PaginaController@index');
+Route::get('/solicitacao', 'SolicitacaoController@index');
