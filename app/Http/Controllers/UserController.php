@@ -108,7 +108,7 @@ class UserController extends Controller
 
         if (!$user->can_edit(Auth::user()->id)) {
             Session::flash('flash_info', 'Você não tem autorização para fazer isso');
-            return redirect(route('user.index'));
+            return redirect('/');
         }
 
         return view('user.edit')->withUser($user);

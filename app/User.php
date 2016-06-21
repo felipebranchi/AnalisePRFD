@@ -39,21 +39,15 @@ class User extends Authenticatable
      *
      * @var array
      */
-    public function can_edit($id)
+    public function can_edit()
     {
-        if (!Auth::guest() && ($id === Auth::user()->id)) {
+        if (Auth::guest()) {
+            return false;
+        }
+        if ($this->id === Auth::user()->id || Auth::user()->isAdmin()) {
             return true;
         }
-    }
-
-    /**
-     * Lista de quem pode editar esse usuário.
-     *
-     * @var array
-     */
-    public function can_edit_list()
-    {
-        return $this->can_edit($id);
+        return false;
     }
 
     /**
@@ -61,9 +55,9 @@ class User extends Authenticatable
      *
      * @var array
      */
-    public function can_see($id)
+    public function can_see()
     {
-        return $this->can_edit($id);
+        return $this->can_edit();
     }
 
     /**
@@ -83,7 +77,7 @@ class User extends Authenticatable
      */
     public function solicitacao()
     {
-        $results = $this->hasMany('App\Solicitacao', 'id', 'usuario_id')->getResults();
+        $results = $this->hasMany('App\Solicitacao', 'id', 'user_id')->getResults();
         return !empty($results) ? $results : null;
     }
 }
