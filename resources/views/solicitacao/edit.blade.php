@@ -36,7 +36,7 @@
     {!! Form::text('endereco', $solicitacao->endereco, ['class' => 'form-control', "required" => "required"]) !!}
   </div>
   <div class="form-group">
-    {!! Form::label('endereco_complemento', 'Complemento de endereço:', ['class' => 'control-label']) !!}
+    {!! Form::label('endereco_complemento', 'Número:', ['class' => 'control-label']) !!}
     {!! Form::text('endereco_complemento', $solicitacao->endereco_complemento, ['class' => 'form-control']) !!}
   </div>
   <div class="form-group">

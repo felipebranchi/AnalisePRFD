@@ -64,6 +64,8 @@
               </a>
 
               <ul class="dropdown-menu" role="menu">
+                <li><a href="{{ route('user.show', Auth::user()->id) }}"><i class="fa fa-btn fa-sign-out"></i>Meus dados</a></li>
+                <li><a href="{{ url('/redefinir-senha') }}"><i class="fa fa-btn fa-sign-out"></i>Alterar minha senha</a></li>
                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Sair</a></li>
               </ul>
             </li>

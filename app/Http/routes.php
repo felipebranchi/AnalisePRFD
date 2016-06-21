@@ -27,4 +27,5 @@ Route::auth();
 
 Route::resource('solicitacao', 'SolicitacaoController');
 Route::resource('user', 'UserController');
-//Route::get('/solicitacao', 'SolicitacaoController@index');
+Route::get('/redefinir-senha', 'UserController@redefinirsenha')->name('redefinir-senha');
+Route::patch('/redefinir-senha-update', 'UserController@updatepassword')->name('redefinir-senha-update');
