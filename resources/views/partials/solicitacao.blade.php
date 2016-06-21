@@ -1,6 +1,12 @@
 
 <article>
-  <h3><a href="{{ route('solicitacao.show', [$solicitacao->id]) }}">Solcititação #{{ $solicitacao->id }} 
+  <h3><a href="{{ route('solicitacao.show', [$solicitacao->id]) }}">
+      @if (isset($listasolicitacao[(int) $solicitacao->tipo]))
+      {{ $listasolicitacao[$solicitacao->tipo] }} #{{ $solicitacao->id }} 
+      @else
+      Solicitação #{{ $solicitacao->id }} 
+      @endif
+
       @if ($solicitacao->user()->name)
       por {{ $solicitacao->user()->name }}
       @endif
@@ -17,6 +23,14 @@
         <dt>Solicitante</dt>
         <dd>{{ $solicitacao->user()->name }}<dd>
           @endif
+        <dt>Tipo</dt>
+        <dd>
+          @if (isset($listasolicitacao[(int) $solicitacao->tipo]))
+          {{ $listasolicitacao[$solicitacao->tipo] }}
+          @else
+          Não definida
+          @endif
+        <dd>
         <dt>UF</dt>
         <dd>{{ isset($listauf[$solicitacao->uf]) ? $listauf[$solicitacao->uf] : $solicitacao->uf }}<dd>
         <dt>Cidade</dt>
