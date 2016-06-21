@@ -15,6 +15,17 @@ trait Lista
     /**
      * Lista com estados da Federação
      */
+    public static $SOLICITACAO = [
+        '0' => 'Poda de árvore',
+        '1' => 'Remoção de árvore',
+        '2' => 'Remoção de lixo doméstico',
+        '3' => 'Remoção de lixo hospitalar',
+        '4' => 'Remoção de entulho'
+    ];
+
+    /**
+     * Lista com estados da Federação
+     */
     public static $UF = [
         '' => '- Selecione uma UF -',
         'AC' => 'Acre',

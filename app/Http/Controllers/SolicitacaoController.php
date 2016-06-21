@@ -13,6 +13,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Middleware\ComumControllers;
+use App\Http\Middleware\Lista;
 use Redirect;
 use Auth;
 use Session;
@@ -23,7 +24,7 @@ use App\User;
 class SolicitacaoController extends Controller
 {
     
-    use ComumControllers;
+    use ComumControllers, Lista;
     
     /**
      * Display a listing of the resource.
@@ -132,7 +133,7 @@ class SolicitacaoController extends Controller
             return redirect(route('solicitacao.index'));
         }
 
-        return view('solicitacao.edit')->withSolicitacao($solicitacao);
+        return view('solicitacao.edit')->withSolicitacao($solicitacao)->with('listasolicitacao', self::$SOLICITACAO);
     }
 
     /**

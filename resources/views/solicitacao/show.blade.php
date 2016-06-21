@@ -1,6 +1,6 @@
 @extends('layouts.app', [
-'title' => "Solicitação",
-'description' => "Solicitação",
+'title' => "Solicitação" . $solicitacao->id,
+'description' => "Solicitação " . $solicitacao->id,
 ])
 @section('content')
 <div id="conteudo" class="container">
