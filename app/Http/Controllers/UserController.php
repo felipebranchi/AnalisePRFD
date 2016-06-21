@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package    EcoService.EcoServiceWeb
  *
@@ -22,10 +21,10 @@ use Redirect;
 
 class UserController extends Controller
 {
-    
+
     use ResetsPasswords,
         ComumControllers;
-    
+
     /**
      * Create a new controller instance.
      *
@@ -37,7 +36,7 @@ class UserController extends Controller
             return redirect()->guest('login');
         }
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -75,8 +74,8 @@ class UserController extends Controller
         $user = User::create($input);
 
         if (!$user->can_edit(Auth::user()->id)) {
-                Session::flash('flash_info', 'Você não tem autorização para fazer isso');
-                return redirect(route('user.index'));
+            Session::flash('flash_info', 'Você não tem autorização para fazer isso');
+            return redirect(route('user.index'));
         }
 
         Session::flash('flash_info', 'Usuário adicionado');
@@ -93,6 +92,13 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
+        $user = User::findOrFail($id);
+
+        if (!$user->can_edit()) {
+            Session::flash('flash_info', 'Você não tem autorização para fazer isso');
+            return redirect('/');
+        }
+
         return view('user.show')->withUser($user);
     }
 
@@ -106,14 +112,14 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        if (!$user->can_edit(Auth::user()->id)) {
+        if (!$user->can_edit()) {
             Session::flash('flash_info', 'Você não tem autorização para fazer isso');
             return redirect('/');
         }
 
         return view('user.edit')->withUser($user);
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -140,7 +146,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        
+
         if (!$user->can_edit(Auth::user()->id)) {
             Session::flash('flash_info', 'Você não tem autorização para fazer isso');
             return redirect(route('user.index'));
@@ -179,7 +185,7 @@ class UserController extends Controller
 
         return redirect()->back();
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
