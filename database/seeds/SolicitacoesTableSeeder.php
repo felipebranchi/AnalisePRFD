@@ -30,8 +30,8 @@ class SolicitacoesTableSeeder extends Seeder
             DB::table('solicitacao')->insert(
                 [
                     //'id' => $i + 1,
-                    // 25% das solicitacoes serao do admin ou do usuaro de teste
-                    'user_id' => rand(0, 4) ? rand(1, 2) : rand(3, 100),
+                    // 5% das solicitacoes serao do admin ou do usuaro de teste
+                    'user_id' => !rand(0, 20) ? rand(1, 2) : rand(3, 100),
                     'cep' => "90050-003",
                     'uf' => array_rand(self::$UF, 1),
                     'cidade' => $faker->city,

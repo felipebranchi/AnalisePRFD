@@ -1,6 +1,10 @@
 
 <article>
-  <h3><a href="{{ route('solicitacao.show', [$solicitacao->id]) }}">Solcititação #{{ $solicitacao->id }}</a>
+  <h3><a href="{{ route('solicitacao.show', [$solicitacao->id]) }}">Solcititação #{{ $solicitacao->id }} 
+    @if ($solicitacao->user()->name)
+     por {{ $solicitacao->user()->name }}
+    @endif
+    </a>
 
     @if (Auth::check() && $solicitacao->can_edit())
     <a href="{{ route('solicitacao.edit', $solicitacao->id) }}" class="btn btn-primary idr-cta-edit">Editar</a>
@@ -9,6 +13,7 @@
 
   </h3>
   <p>{{ $solicitacao->user_id }}
+  <p>{{ $solicitacao->user()->name }}
   <p>{{ $solicitacao->cep }}
   <p>{{ $solicitacao->uf }}
   <p>{{ $solicitacao->cidade }}

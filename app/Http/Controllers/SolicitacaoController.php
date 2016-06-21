@@ -39,9 +39,15 @@ class SolicitacaoController extends Controller
             //$this->middleware('auth');
             return redirect('/login');
         }
+        
+        //$isAdmin = Auth::user()->isAdmin();
+        $user = Auth::user();
 
-        $solicitacoes = Solicitacao::where(function($query) {
+        $solicitacoes = Solicitacao::where(function($query) use ($user) {
                 //$query->where('user_id', '=', Auth::user()->id);
+                if (!$user->isAdmin()) {
+                    $query->where('user_id', '=', $user->id);
+                }
             })->paginate(20);
 
         return view('solicitacao.index')->withSolicitacoes($solicitacoes);
