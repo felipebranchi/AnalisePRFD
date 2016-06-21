@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package    EcoService.EcoServiceWeb
  *
@@ -15,6 +14,7 @@ use Auth;
 
 class Solicitacao extends Model
 {
+
     /**
      * The attributes that are mass assignable.
      *
@@ -23,21 +23,39 @@ class Solicitacao extends Model
     protected $fillable = [
         'cep',
         'uf',
-        'cidade', 
-        'bairro', 
-        'endereco', 
-        'endereco_complemento', 
-        'observacao', 
+        'cidade',
+        'bairro',
+        'endereco',
+        'endereco_complemento',
+        'observacao',
         'tipo'
     ];
-    
+
     /**
      * Tabela associada a user.
      *
      * @var string
      */
     protected $table = 'solicitacao';
-    
+
+    /**
+     * Gerencia criação e edição
+     */
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function($model) {
+            $user = Auth::user();
+            $model->user_id = $user->id;
+            //$model->created_by = $user->id;
+            //$model->updated_by = $user->id;
+        });
+        static::updating(function($model) {
+            //$user = Auth::user();
+            //$model->updated_by = $user->id;
+        });
+    }
+
     /**
      * Relacionamento entre entidades.
      *
@@ -47,7 +65,7 @@ class Solicitacao extends Model
     {
         return $this->hasOne('App\User', 'usuario_id');
     }
-    
+
     /**
      * Retorna anexo, caso exista
      *
@@ -57,7 +75,7 @@ class Solicitacao extends Model
     {
         return $this->belongsTo('App\User')->getResults();
     }
-    
+
     /**
      * Retorna se um dado ID de usuário pode editar esta entidade
      *
@@ -67,7 +85,7 @@ class Solicitacao extends Model
     {
         return true;
     }
-    
+
     /**
      * Quem pode ver esse usuário.
      *
@@ -77,5 +95,4 @@ class Solicitacao extends Model
     {
         return true;
     }
-    
 }

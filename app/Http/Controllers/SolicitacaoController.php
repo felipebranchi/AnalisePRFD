@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package    EcoService.EcoServiceWeb
  *
@@ -23,9 +22,10 @@ use App\User;
 
 class SolicitacaoController extends Controller
 {
-    
-    use ComumControllers, Lista;
-    
+
+    use ComumControllers,
+        Lista;
+
     /**
      * Display a listing of the resource.
      *
@@ -34,8 +34,8 @@ class SolicitacaoController extends Controller
     public function index()
     {
         $solicitacoes = Solicitacao::where(function($query) {
-            //$query->where('user_id', '=', Auth::user()->id);
-        })->paginate(20);
+                //$query->where('user_id', '=', Auth::user()->id);
+            })->paginate(20);
 
         return view('solicitacao.index')->withSolicitacoes($solicitacoes);
     }
@@ -47,12 +47,16 @@ class SolicitacaoController extends Controller
      */
     public function create()
     {
-        if (ComumControllers::isNaoAutenticado()) {
+        if (Auth::guest()) {
             Session::flash('flash_info', 'É necessário estar logado para criar nova solicitação');
             return redirect(route('home'));
         }
         
-        return view('solicitacao.create')->withUser($user);
+        $user = Auth::user();
+
+        return view('solicitacao.create')->withUser($user)
+                ->with('listasolicitacao', self::$SOLICITACAO)
+                ->with('listauf', self::$UF);
     }
 
     /**
@@ -64,44 +68,28 @@ class SolicitacaoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'usuario_id' => 'required',
-            'data' => 'required',
-            'descricao' => 'required'
+            'tipo' => 'required',
+            'uf' => 'required',
+            'cidade' => 'required',
+            'endereco' => 'required'
         ]);
 
-        // Valida se usuario logado pode mesmo criar algo relacionado a paciente_id
-        $paciente_id = $request->input('paciente_id');
-        $paciente = null;
-        if ($paciente_id) {
-            $paciente = Paciente::findOrFail($paciente_id);
-            //dd($paciente);
-            if (!$paciente || !$paciente->can_edit()) {
-                Session::flash('flash_info', 'Você não tem autorização para fazer isso');
-                return redirect(route('home'));
-            }
-        } else {
-            Session::flash('flash_info', 'É necessário escolher um paciente para criar novo procedimento');
-            return redirect(route('home'));
-        }
-
-        // @todo checar se este usuario REALMENTE pode salvar dentista_id.        
-
         $input = $request->all();
+        
+        //$input['user_id'] = Auth::user()->id;
 
-        //$input = $this->limpezaGenerica($input);
-
-        $procedimento = Procedimento::create($input);
+        $solicitacao = Solicitacao::create($input);
 
         // Checa permissões se o usuário pode editar; Superadministrador pode
         // passar por cima das permissoes
-        if (!$procedimento->can_edit()) {
+        if (!$solicitacao->can_edit()) {
             Session::flash('flash_info', 'Você não tem autorização para fazer isso');
-            return redirect(route('procedimento.index'));
+            return redirect(route('solicitacao.index'));
         }
 
-        Session::flash('flash_info', 'Procedimento adicionada');
+        Session::flash('flash_info', 'Solicitacao adicionada');
 
-        return Redirect::action('ProcedimentoController@edit', array($procedimento->id));
+        return Redirect::action('SolicitacaoController@show', array($solicitacao->id));
     }
 
     /**
@@ -134,8 +122,8 @@ class SolicitacaoController extends Controller
         }
 
         return view('solicitacao.edit')->withSolicitacao($solicitacao)
-            ->with('listasolicitacao', self::$SOLICITACAO)
-            ->with('listauf', self::$UF);
+                ->with('listasolicitacao', self::$SOLICITACAO)
+                ->with('listauf', self::$UF);
     }
 
     /**
@@ -180,19 +168,19 @@ class SolicitacaoController extends Controller
      */
     public function destroy($id)
     {
-        $procedimento = Procedimento::findOrFail($id);
+        $solicitacao = Solicitacao::findOrFail($id);
 
         // Checa permissões se o usuário pode editar; Superadministrador pode
         // passar por cima das permissoes
-        if (!$procedimento->can_edit()) {
+        if (!$solicitacao->can_edit()) {
             Session::flash('flash_info', 'Você não tem autorização para fazer isso');
-            return redirect(route('procedimento.index'));
+            return redirect(route('solicitacao.index'));
         }
 
-        $procedimento->delete();
+        $solicitacao->delete();
 
-        Session::flash('flash_info', 'Procedimento removido com sucesso!');
+        Session::flash('flash_info', 'Solicitacao removido com sucesso!');
 
-        return redirect()->route('procedimento.index');
+        return redirect()->route('solicitacao.index');
     }
 }
