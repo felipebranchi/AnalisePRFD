@@ -35,11 +35,11 @@ class SolicitacaoController extends Controller
     {
 
         if (Auth::guest()) {
-            Session::flash('flash_info', 'Para ver suas solicitações, é necessário ter um cadastro e estar autenticado.<br> Não tem uma conta ainda? <a href="' . url('/register').'">Cadastre-se no site clicando aqui! </a>' );
+            Session::flash('flash_info', 'Para ver suas solicitações, é necessário ter um cadastro e estar autenticado.<br> Não tem uma conta ainda? <a href="' . url('/register') . '">Cadastre-se no site clicando aqui! </a>');
             //$this->middleware('auth');
             return redirect('/login');
         }
-        
+
         //$isAdmin = Auth::user()->isAdmin();
         $user = Auth::user();
 
@@ -50,7 +50,9 @@ class SolicitacaoController extends Controller
                 }
             })->paginate(20);
 
-        return view('solicitacao.index')->withSolicitacoes($solicitacoes);
+        return view('solicitacao.index')->withSolicitacoes($solicitacoes)
+                ->with('listasolicitacao', self::$SOLICITACAO)
+                ->with('listauf', self::$UF);
     }
 
     /**
@@ -114,7 +116,9 @@ class SolicitacaoController extends Controller
     public function show($id)
     {
         $solicitacao = Solicitacao::findOrFail($id);
-        return view('solicitacao.show')->withSolicitacao($solicitacao);
+        return view('solicitacao.show')->withSolicitacao($solicitacao)
+                ->with('listasolicitacao', self::$SOLICITACAO)
+                ->with('listauf', self::$UF);
     }
 
     /**
