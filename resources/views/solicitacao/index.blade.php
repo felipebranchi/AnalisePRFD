@@ -8,6 +8,8 @@
   <div class="row">
     <div class="col-md-12">
       <h1><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Lista de Solicitações
+
+        <a href="{{ route('solicitacao.create') }}" class="btn btn-success idr-cta-edit">Criar nova solicitação</a>
       </h1>
 
       @include('partials.solicitacoes')

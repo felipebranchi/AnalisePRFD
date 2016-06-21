@@ -33,6 +33,13 @@ class SolicitacaoController extends Controller
      */
     public function index()
     {
+
+        if (Auth::guest()) {
+            Session::flash('flash_info', 'Para ver suas solicitações, é necessário ter um cadastro e estar autenticado.<br> Não tem uma conta ainda? <a href="' . url('/register').'">Cadastre-se no site clicando aqui! </a>' );
+            //$this->middleware('auth');
+            return redirect('/login');
+        }
+
         $solicitacoes = Solicitacao::where(function($query) {
                 //$query->where('user_id', '=', Auth::user()->id);
             })->paginate(20);
@@ -51,7 +58,7 @@ class SolicitacaoController extends Controller
             Session::flash('flash_info', 'É necessário estar logado para criar nova solicitação');
             return redirect(route('home'));
         }
-        
+
         $user = Auth::user();
 
         return view('solicitacao.create')->withUser($user)
@@ -75,7 +82,7 @@ class SolicitacaoController extends Controller
         ]);
 
         $input = $request->all();
-        
+
         //$input['user_id'] = Auth::user()->id;
 
         $solicitacao = Solicitacao::create($input);
