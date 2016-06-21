@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @package    EcoService.EcoServiceWeb
+ *
+ * @author     Renata Givisiez <rcgivisiez@gmail.com>
+ * @copyright  Copyright (C) 2016 Renata Givisiez. All rights reserved.
+ * @license    The MIT License (MIT)
+ */
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -17,4 +25,4 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'PaginaController@index');
