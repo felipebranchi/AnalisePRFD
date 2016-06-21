@@ -133,7 +133,9 @@ class SolicitacaoController extends Controller
             return redirect(route('solicitacao.index'));
         }
 
-        return view('solicitacao.edit')->withSolicitacao($solicitacao)->with('listasolicitacao', self::$SOLICITACAO);
+        return view('solicitacao.edit')->withSolicitacao($solicitacao)
+            ->with('listasolicitacao', self::$SOLICITACAO)
+            ->with('listauf', self::$UF);
     }
 
     /**
@@ -145,32 +147,29 @@ class SolicitacaoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // @todo garantir que o usuario autenticado REALMENTE possa atualizar este paciente_id
-        //       atualmente ele poderia atualizar como se fosse outro paciente
-        // @todo checar se este usuario REALMENTE pode salvar dentista_id.   
-
-        $procedimento = Procedimento::findOrFail($id);
+        $solicitacao = Solicitacao::findOrFail($id);
 
         // Checa permissões se o usuário pode editar; Superadministrador pode
         // passar por cima das permissoes
-        if (!$procedimento->can_edit()) {
+        if (!$solicitacao->can_edit()) {
             Session::flash('flash_info', 'Você não tem autorização para fazer isso');
-            return redirect(route('procedimento.index'));
+            return redirect(route('solicitacao.index'));
         }
 
         $this->validate($request, [
-            'paciente_id' => 'required',
-            'data' => 'required',
-            'descricao' => 'required'
+            'tipo' => 'required',
+            'uf' => 'required',
+            'cidade' => 'required',
+            'endereco' => 'required'
         ]);
 
         $input = $request->all();
 
-        $procedimento->fill($input)->save();
+        $solicitacao->fill($input)->save();
 
-        Session::flash('flash_info', 'Procedimento atualizado com sucesso!');
+        Session::flash('flash_info', 'Solicitação atualizado com sucesso!');
 
-        return redirect()->back();
+        return redirect(route('solicitacao.show', $solicitacao->id));
     }
 
     /**

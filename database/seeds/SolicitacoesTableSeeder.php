@@ -38,7 +38,7 @@ class SolicitacoesTableSeeder extends Seeder
                     'bairro' => $faker->name,
                     'endereco' => $faker->name,
                     'endereco_complemento' => $faker->address,
-                    'observacao' => $faker->text(255),
+                    'observacao' => $faker->text(rand(255, 1024)),
                     'tipo' => rand(0, 4),
                     'created_at' => $faker->datetime(),
                     'updated_at' => $faker->datetime()
