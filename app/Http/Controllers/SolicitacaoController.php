@@ -82,6 +82,12 @@ class SolicitacaoController extends Controller
      */
     public function store(Request $request)
     {
+        if (Auth::guest()) {
+            Session::flash('flash_info', 'É necessário estar logado para criar nova solicitação');
+            return redirect(route('home'));
+        }
+
+
         $this->validate($request, [
             'tipo' => 'required',
             'uf' => 'required',
@@ -115,7 +121,20 @@ class SolicitacaoController extends Controller
      */
     public function show($id)
     {
+        if (Auth::guest()) {
+            Session::flash('flash_info', 'É necessário estar logado para criar nova solicitação');
+            return redirect(route('home'));
+        }
+
         $solicitacao = Solicitacao::findOrFail($id);
+
+        // Checa permissões se o usuário pode editar; Superadministrador pode
+        // passar por cima das permissoes
+        if (!$solicitacao->can_see()) {
+            Session::flash('flash_info', 'Você não tem autorização para fazer isso');
+            return redirect(route('solicitacao.index'));
+        }
+
         return view('solicitacao.show')->withSolicitacao($solicitacao)
                 ->with('listasolicitacao', self::$SOLICITACAO)
                 ->with('listauf', self::$UF);
@@ -129,6 +148,11 @@ class SolicitacaoController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::guest()) {
+            Session::flash('flash_info', 'É necessário estar logado para criar nova solicitação');
+            return redirect(route('home'));
+        }
+
         $solicitacao = Solicitacao::findOrFail($id);
 
         // Checa permissões se o usuário pode editar; Superadministrador pode

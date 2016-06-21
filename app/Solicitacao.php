@@ -83,7 +83,13 @@ class Solicitacao extends Model
      */
     public function can_edit()
     {
-        return true;
+        if (Auth::guest()) {
+            return false;
+        }
+        if ((int) $this->user_id === Auth::user()->id || Auth::user()->isAdmin()) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -93,6 +99,6 @@ class Solicitacao extends Model
      */
     public function can_see()
     {
-        return true;
+        return $this->can_edit();
     }
 }
