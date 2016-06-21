@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package    EcoService.EcoServiceWeb
  *
@@ -16,6 +15,7 @@ use Hash;
 
 class User extends Authenticatable
 {
+
     /**
      * The attributes that are mass assignable.
      *
@@ -33,7 +33,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
+
     /**
      * Quem pode editar esse usuário.
      *
@@ -64,6 +64,16 @@ class User extends Authenticatable
     public function can_see($id)
     {
         return $this->can_edit($id);
+    }
+
+    /**
+     * Retorna se o usuário atual é um administrador
+     *
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return (bool) $this->is_admin;
     }
 
     /**

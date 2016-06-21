@@ -25,4 +25,5 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/solicitacao', 'SolicitacaoController@index');
+Route::resource('solicitacao', 'SolicitacaoController');
+//Route::get('/solicitacao', 'SolicitacaoController@index');

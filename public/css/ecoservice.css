@@ -11,6 +11,11 @@ img {
   content:" *";
   color:red;
 }
-/* Fundo verde. */
+.idr-cta-edit {
+  float: right;
+  margin-left: 8px;
+}
+/* Fundo verde. 
 body {background-color: #11772D;}
 footer {color: gray;}
+*/

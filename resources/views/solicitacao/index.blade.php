@@ -4,9 +4,9 @@
 ])
 @section('content')
 
-<section id="conteudo">
+<section id="conteudo" class="container">
   <div class="row">
-    <div class="col-md-12 pleme-grid-inner">
+    <div class="col-md-12">
       <h1><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Lista de Solicitações
       </h1>
 

@@ -111,8 +111,8 @@ class SolicitacaoController extends Controller
      */
     public function show($id)
     {
-        $procedimento = Procedimento::findOrFail($id);
-        return view('procedimento.show')->withProcedimento($procedimento);
+        $solicitacao = Solicitacao::findOrFail($id);
+        return view('solicitacao.show')->withSolicitacao($solicitacao);
     }
 
     /**
@@ -123,16 +123,16 @@ class SolicitacaoController extends Controller
      */
     public function edit($id)
     {
-        $procedimento = Procedimento::findOrFail($id);
+        $solicitacao = Solicitacao::findOrFail($id);
 
         // Checa permissões se o usuário pode editar; Superadministrador pode
         // passar por cima das permissoes
-        if (!$procedimento->can_edit()) {
+        if (!$solicitacao->can_edit()) {
             Session::flash('flash_info', 'Você não tem autorização para fazer isso');
-            return redirect(route('procedimento.index'));
+            return redirect(route('solicitacao.index'));
         }
 
-        return view('procedimento.edit')->withProcedimento($procedimento);
+        return view('solicitacao.edit')->withSolicitacao($solicitacao);
     }
 
     /**
